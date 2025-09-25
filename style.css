@@ -303,7 +303,7 @@ a {
     background-size: cover;
     background-position: center center;
     background-attachment: fixed; /* Efecto parallax */
-background-image: url('imagenes/hero-background.jpg'); /* <<-- ASEGÚRATE DE USAR ESTA RUTA PARA TU IMAGEN DE FONDO */
+background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USAR ESTA RUTA PARA TU IMAGEN DE FONDO */
     
     
 }
