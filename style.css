@@ -383,7 +383,13 @@ background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USA
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-image, .product-image , .about-image{
+.gallery-image, .product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s var(--curva-transicion), filter 0.4s var(--curva-transicion);
+}
+.about-image {
     width: 100%;
     height: auto;
     display: block;
