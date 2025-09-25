@@ -37,49 +37,180 @@
     </header>
 
     <main id="home-page">
-        </main>
+        <section class="hero" aria-label="Bienvenida al Salón Chic">
+            <div class="hero-content">
+                <h1 class="hero-title">El Arte de la Belleza Sutil</h1>
+                <p class="hero-subtitle">Descubre la elegancia atemporal. Tu estilo, nuestra pasión.</p>
+                <a href="#contacto" class="btn">Reservar Cita</a>
+            </div>
+        </section>
+
+        <section class="section section-about-intro" aria-labelledby="heading-about-intro">
+            <div class="container">
+                <h2 id="heading-about-intro">La Maestría Detrás de la Belleza</h2>
+                <div class="about-content-grid">
+                    <div class="about-text">
+                        <p>En Salon Chic, creemos que la verdadera belleza reside en la armonía y la sofisticación. [Nombre del Estilista] no solo crea peinados, sino que esculpe arte con cada hebra, combinando técnicas clásicas con una visión moderna para realzar tu esencia natural.</p>
+                        <p>Cada visita es una experiencia personalizada, donde la atención al detalle y el servicio excepcional son la base de nuestra promesa. Sumérgete en un espacio de calma y lujo, diseñado para tu completo bienestar y transformación.</p>
+                        <a href="acerca.html" class="btn btn-secondary">Conoce al Estilista</a>
+                    </div>
+                    <div class="about-image-wrapper">
+                        <img src="assets/foto1.jpg" alt="Retrato profesional del estilista principal de Salon Chic, elegante y sereno" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-featured-services bg-light" aria-labelledby="heading-featured-services">
+            <div class="container">
+                <h2 id="heading-featured-services">Nuestros Servicios Exclusivos</h2>
+                <p class="section-description">Un viaje hacia la perfección, diseñado solo para ti.</p>
+                
+                <div class="grid-gallery">
+                    <article class="gallery-item service-card fade-in-up">
+                        <img src="assets/foto2.jpg" alt="Detalle de un peinado con ondas suaves y brillo" class="gallery-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Diseño de Color Personalizado</h3>
+                            <p class="product-price">Desde $150</p>
+                            <a href="servicios.html#color" class="btn btn-secondary">Explorar</a>
+                        </div>
+                    </article>
+                    <article class="gallery-item service-card fade-in-up">
+                        <img src="assets/foto3.jpg" alt="Primer plano de un corte de cabello moderno y preciso" class="gallery-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Corte de Precisión de Autor</h3>
+                            <p class="product-price">Desde $80</p>
+                            <a href="servicios.html#corte" class="btn btn-secondary">Explorar</a>
+                        </div>
+                    </article>
+                    <article class="gallery-item service-card fade-in-up">
+                        <img src="assets/foto4.jpg" alt="Tratamiento capilar de lujo aplicado al cabello" class="gallery-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Rituales Capilares de Lujo</h3>
+                            <p class="product-price">Desde $120</p>
+                            <a href="servicios.html#tratamientos" class="btn btn-secondary">Explorar</a>
+                        </div>
+                    </article>
+                </div>
+                 <a href="servicios.html" class="btn">Ver Todos los Servicios</a>
+            </div>
+        </section>
+
+        <section class="section section-video" aria-labelledby="heading-video">
+            <div class="container">
+                <h2 id="heading-video">Descubre el Arte en Movimiento</h2>
+                <p>Mira a [Nombre del Estilista] en acción, transformando y creando belleza con cada detalle.</p>
+                <div class="video-wrapper fade-in-up">
+                    <div class="video-placeholder">Video del Estilista Aquí</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-contact-location bg-light" id="contacto" aria-labelledby="heading-contacto">
+            <div class="container">
+                <h2 id="heading-contacto">Conéctate con Nosotros</h2>
+                <p>Estamos ubicados en el corazón de la ciudad, listos para realzar tu belleza.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-info fade-in-up">
+                        <h3>Visítanos</h3>
+                        <address>
+                            <strong>Salon Chic</strong><br>
+                            Calle Principal #123, Ciudad, País<br>
+                            <a href="https://maps.app.goo.gl/TUdireccion" target="_blank" class="link-map">Ver en el mapa</a>
+                        </address>
+                        <h3>Contáctanos</h3>
+                        <p>Teléfono: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        <p>Email: <a href="mailto:info@salonchic.com">info@salonchic.com</a></p>
+                        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn whatsapp-btn" aria-label="Contactar por WhatsApp">
+                            <i class="fab fa-whatsapp"></i> Chatea con nosotros
+                        </a>
+                    </div>
+                    <div class="map-placeholder fade-in-up" style="height: 300px; background-color: var(--color-gris-perla); margin-top: 2em; display: flex; align-items: center; justify-content: center; color: var(--color-negro-mate);">
+                        <p>Cargando Mapa...</p>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
-        </footer>
+        <div class="container">
+            <a href="index.html" class="footer-logo">Salon Chic</a>
+            <div class="social-links" aria-label="Redes Sociales">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> Salon Chic. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script>
+        // Actualizar año en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Lógica para el menú hamburguesa (toggle)
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        const closeMenu = document.querySelector('.close-menu'); // Nuevo botón de cierre
+        const closeMenu = document.querySelector('.close-menu');
 
         navToggle.addEventListener('click', () => {
-            navMenu.classList.add('active'); // Añadir clase 'active' para abrir
+            navMenu.classList.add('active');
             navToggle.setAttribute('aria-expanded', true);
-            document.body.style.overflow = 'hidden'; // Evitar scroll del body cuando el menú está abierto
+            document.body.classList.add('menu-open'); // Añadir clase para el overlay
         });
 
         closeMenu.addEventListener('click', () => {
-            navMenu.classList.remove('active'); // Quitar clase 'active' para cerrar
+            navMenu.classList.remove('active');
             navToggle.setAttribute('aria-expanded', false);
-            document.body.style.overflow = ''; // Restaurar scroll del body
+            document.body.classList.remove('menu-open'); // Quitar clase del overlay
         });
 
         // Cerrar menú al hacer clic en un enlace (para móviles)
-        document.querySelectorAll('.nav-list a').forEach(link => { // Apuntar a los enlaces dentro de nav-list
+        document.querySelectorAll('.nav-list a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                     navToggle.setAttribute('aria-expanded', false);
-                    document.body.style.overflow = '';
+                    document.body.classList.remove('menu-open');
                 }
             });
         });
 
         // Opcional: Cerrar menú si se hace clic fuera de él
         document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !navToggle.contains(e.target) && !closeMenu.contains(e.target)) {
                 navMenu.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', false);
-                document.body.style.overflow = '';
+                document.body.classList.remove('menu-open');
             }
         });
+
+        // Animación de revelación al hacer scroll (requiere JavaScript)
+        const faders = document.querySelectorAll('.fade-in-up');
+        const appearOptions = {
+            threshold: 0.3, // Cuando el 30% del elemento es visible
+            rootMargin: "0px 0px -50px 0px" // Inicia la animación 50px antes del final del viewport
+        };
+        const appearOnScroll = new IntersectionObserver(function(
+            entries,
+            appearOnScroll
+        ) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appeared');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
     </script>
 
 </body>
