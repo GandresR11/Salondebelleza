@@ -32,12 +32,37 @@ body {
     overflow-x: hidden; /* Previene scroll horizontal indeseado */
 }
 
+/* Estilo para el overlay cuando el menú lateral está abierto */
+body.menu-open {
+    overflow: hidden; /* Evita el scroll del contenido de fondo */
+}
+
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+    z-index: 999; /* Por debajo del menú, por encima del contenido */
+    opacity: 1;
+    transition: opacity var(--tiempo-transicion) var(--curva-transicion);
+}
+
+body:not(.menu-open)::before {
+    opacity: 0;
+    pointer-events: none; /* No interactúa cuando está oculto */
+}
+
+
 /* Base de Tipografía */
 h1, h2, h3, h4 {
     font-family: var(--fuente-serif);
     font-weight: 300; /* Peso ligero para elegancia */
     line-height: 1.2;
     margin-bottom: 0.5em;
+    color: var(--color-negro-mate);
 }
 
 a {
@@ -52,12 +77,16 @@ a {
 .container {
     width: 90%; /* Ancho en móviles */
     margin: 0 auto;
-    padding: 2em 0;
+    padding: 1em 0; /* Ajuste para dar más control al header/footer */
 }
 
 .section {
     padding: 4em 0; /* Espaciado vertical en móviles */
     text-align: center;
+}
+
+.section.bg-light {
+    background-color: var(--color-blanco-roto); /* Usar blanco roto para secciones ligeras */
 }
 
 /* Utilidad de Espacio Blanco (Clave en minimalismo) */
@@ -67,7 +96,7 @@ a {
 }
 
 /* ========================================================================= */
-/* 3. ENCABEZADO (HEADER) Y NAVEGACIÓN */
+/* 3. ENCABEZADO (HEADER) Y NAVEGACIÓN - MENÚ LATERAL MOBILE FIRST */
 /* ========================================================================= */
 .header {
     background-color: var(--color-blanco-roto);
@@ -82,6 +111,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 /* Logotipo - Estilo Elegante */
@@ -90,21 +120,82 @@ a {
     font-size: 1.8em;
     font-weight: 400;
     letter-spacing: 3px; /* Espaciado sutil */
+    color: var(--color-negro-mate);
 }
 
-/* Estilos de Navegación */
+/* Botón de apertura (hamburguesa) - visible en móviles */
+.nav-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.8em;
+    color: var(--color-negro-mate);
+    cursor: pointer;
+    z-index: 1001; /* Asegura que esté por encima del nav-menu */
+    transition: color var(--tiempo-transicion);
+}
+
+.nav-toggle:hover {
+    color: var(--color-oro-palido);
+}
+
+/* Menú Lateral (Mobile First) */
 .nav-menu {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    right: -100%; /* Inicialmente fuera de la pantalla a la derecha */
+    width: 80%; /* Ancho del menú en móvil */
+    max-width: 300px; /* Ancho máximo para evitar ser demasiado grande en tablets */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: var(--color-blanco-roto);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right var(--tiempo-transicion) var(--curva-transicion);
+    z-index: 1000; /* Por encima de la página, por debajo del toggle */
+    display: flex; /* Para centrar contenido o apilar */
+    flex-direction: column;
+    padding: 2em 1.5em; /* Espaciado interno */
+}
+
+.nav-menu.active {
+    right: 0; /* Desliza el menú para que sea visible */
+}
+
+/* Botón de cierre del menú lateral */
+.close-menu {
+    background: transparent;
+    border: none;
+    font-size: 1.8em;
+    color: var(--color-negro-mate);
+    cursor: pointer;
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    z-index: 1001; /* Asegura que esté por encima del resto del menú */
+    transition: color var(--tiempo-transicion);
+}
+
+.close-menu:hover {
+    color: var(--color-oro-palido);
+}
+
+/* Lista de enlaces del menú */
+.nav-list {
     list-style: none;
-    display: none; /* Oculto en móviles, se gestiona con JS/media queries */
+    display: flex;
+    flex-direction: column; /* Apila los enlaces verticalmente */
+    margin-top: 3em; /* Espacio para el botón de cierre */
+    align-items: flex-start; /* Alinea los enlaces a la izquierda del menú */
+    gap: 1.5em; /* Espacio entre elementos del menú */
 }
 
 .nav-link {
     font-family: var(--fuente-sans-serif);
     text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 1.1em; /* Un poco más grandes para móvil */
     padding: 0.5em 0;
     position: relative;
-    /* Efecto de Subrayado Sutil en Hover */
+    display: block; /* Asegura que ocupe todo el ancho para el hover */
+    width: 100%;
+    text-align: left; /* Alinea el texto a la izquierda */
 }
 
 .nav-link:hover {
@@ -112,6 +203,7 @@ a {
 }
 
 .nav-link::after {
+    /* Mantiene el efecto de subrayado sutil */
     content: '';
     position: absolute;
     left: 0;
@@ -123,8 +215,16 @@ a {
 }
 
 .nav-link:hover::after {
-    width: 100%; /* El subrayado se dibuja */
+    width: 100%;
 }
+
+/* Estilos específicos para el botón "Reservar Cita" dentro del menú lateral */
+.nav-menu .nav-link.btn {
+    margin-top: 2em; /* Más espacio */
+    width: auto; /* Permite que el botón se ajuste a su contenido */
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+
 
 /* ========================================================================= */
 /* 4. BOTONES (CTAs) Y ESTILOS DE LUJO */
@@ -162,6 +262,22 @@ a {
     color: var(--color-blanco-roto);
 }
 
+/* Estilo específico para el botón de WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366; /* Verde WhatsApp */
+    color: var(--color-blanco-roto);
+    border-color: #25D366;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E; /* Verde más oscuro al hover */
+    border-color: #128C7E;
+}
+.whatsapp-btn i {
+    margin-right: 0.5em;
+}
+
+
 /* ========================================================================= */
 /* 5. SECCIÓN HERO (ANIMACIÓN DE ENTRADA) */
 /* ========================================================================= */
@@ -183,31 +299,26 @@ a {
     justify-content: center;
     position: relative;
     overflow: hidden;
-}
-
-.hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.8; /* Sutil transparencia para destacar el texto */
+    background-image: url('assets/hero-image.jpg'); /* Reemplaza con tu imagen del estilista */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Efecto parallax */
 }
 
 .hero-content {
     max-width: 90%;
     padding: 2em;
     text-align: center;
-    background-color: rgba(245, 245, 245, 0.8); /* Fondo semi-transparente para legibilidad */
+    background-color: rgba(245, 245, 245, 0.85); /* Fondo semi-transparente para legibilidad */
     animation: fadeInUp 1.2s var(--curva-transicion) both;
     animation-delay: 0.5s;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
 }
 
 .hero-title {
     font-size: 2.5em; /* Tamaño en móviles */
     margin-bottom: 0.2em;
+    color: var(--color-negro-mate);
 }
 
 .hero-subtitle {
@@ -216,6 +327,24 @@ a {
     color: var(--color-negro-mate);
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+/* Estilo para héroes de páginas genéricas */
+.hero-small {
+    min-height: 40vh;
+    background-color: var(--color-gris-perla); /* Fondo genérico o imagen específica */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-negro-mate);
+}
+.hero-small .container {
+    background-color: rgba(245, 245, 245, 0.85);
+    padding: 1.5em;
+    border-radius: 5px;
+}
+.hero-small h1 {
+    font-size: 2em;
 }
 
 /* ========================================================================= */
@@ -262,6 +391,7 @@ a {
 .product-title {
     font-size: 1.2em;
     margin-bottom: 0.2em;
+    color: var(--color-negro-mate);
 }
 
 .product-price {
@@ -271,7 +401,29 @@ a {
 }
 
 /* ========================================================================= */
-/* 7. PIE DE PÁGINA (FOOTER) Y CONTACTO */
+/* 7. VIDEO RESPONSIVE */
+/* ========================================================================= */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: var(--color-negro-mate); /* Fondo mientras carga el video */
+    margin-top: 2em;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ========================================================================= */
+/* 8. PIE DE PÁGINA (FOOTER) Y CONTACTO */
 /* ========================================================================= */
 .footer {
     background-color: var(--color-negro-mate);
@@ -285,11 +437,16 @@ a {
     font-size: 1.5em;
     letter-spacing: 2px;
     margin-bottom: 1em;
+    display: inline-block; /* Para aplicar margin-bottom */
+}
+
+.social-links {
+    margin-top: 1.5em;
 }
 
 .social-links a {
     color: var(--color-gris-perla);
-    margin: 0 0.5em;
+    margin: 0 0.7em;
     font-size: 1.5em;
     transition: color var(--tiempo-transicion) var(--curva-transicion);
 }
@@ -304,8 +461,15 @@ a {
     margin-top: 2em;
 }
 
+/* Estilos para el placeholder del mapa */
+.map-placeholder {
+    color: var(--color-negro-mate);
+    font-family: var(--fuente-sans-serif);
+    font-weight: 600;
+}
+
 /* ========================================================================= */
-/* 8. MEDIA QUERIES (ADAPTACIÓN A ESCRITORIO Y TABLET) */
+/* 9. MEDIA QUERIES (ADAPTACIÓN A ESCRITORIO Y TABLET) */
 /* ========================================================================= */
 @media (min-width: 768px) {
     .container {
@@ -314,9 +478,42 @@ a {
     }
 
     /* Navegación de Escritorio */
+    .nav-toggle,
+    .close-menu {
+        display: none;
+    }
+
+    /* Menú de navegación horizontal en escritorio */
     .nav-menu {
+        position: static; /* Vuelve a su posición normal */
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        transition: none;
+        flex-direction: row; /* Elementos en fila */
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .nav-list {
         display: flex;
-        gap: 2em;
+        flex-direction: row; /* Muestra los enlaces horizontalmente */
+        gap: 2em; /* Espacio entre elementos en escritorio */
+        margin-top: 0;
+        align-items: center; /* Centra verticalmente los enlaces */
+    }
+
+    .nav-link {
+        font-size: 0.9em; /* Vuelve al tamaño original */
+        width: auto; /* Los enlaces ocupan su ancho natural */
+        text-align: center; /* Vuelve a centrar el texto si es necesario */
+    }
+
+    .nav-menu .nav-link.btn {
+        margin-top: 0;
+        align-self: center; /* Centra el botón con los enlaces */
+        margin-left: 1em; /* Un poco de espacio extra */
     }
 
     /* Hero en Escritorio */
@@ -324,8 +521,21 @@ a {
         min-height: 90vh;
     }
 
+    .hero-content {
+        max-width: 60%; /* Más estrecho en escritorio para enfocar */
+        padding: 3em;
+    }
+
     .hero-title {
         font-size: 4em; /* Más grande en escritorio */
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2em;
+    }
+
+    .hero-small h1 {
+        font-size: 3em;
     }
 
     /* Grid de 2 o 3 columnas */
@@ -336,5 +546,15 @@ a {
 
     .section {
         padding: 6em 0; /* Más espacio en blanco en escritorio */
+    }
+}
+
+/* Opcional: Ajuste para pantallas aún más grandes */
+@media (min-width: 1200px) {
+    .container {
+        width: 80%;
+    }
+    .hero-title {
+        font-size: 5em;
     }
 }
