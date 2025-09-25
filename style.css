@@ -299,10 +299,13 @@ a {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background-image: url('assets/hero-image.jpg'); /* Reemplaza con tu imagen del estilista */
+   /*background-image: url('assets/hero-image.jpg'); /* Reemplaza con tu imagen del estilista */
     background-size: cover;
     background-position: center center;
     background-attachment: fixed; /* Efecto parallax */
+background-image: url('imagenes/hero-background.jpg'); /* <<-- ASEGÚRATE DE USAR ESTA RUTA PARA TU IMAGEN DE FONDO */
+    
+    
 }
 
 .hero-content {
@@ -347,6 +350,16 @@ a {
     font-size: 2em;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Un 10% de negro para un sutil oscurecimiento */
+    z-index: -1; /* Asegura que esté detrás del contenido del hero */
+}
 /* ========================================================================= */
 /* 6. GALERÍA Y PRODUCTOS (GRID RESPONSIVE) */
 /* ========================================================================= */
