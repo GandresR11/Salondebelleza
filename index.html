@@ -41,7 +41,38 @@
             <div class="hero-content">
                 <h1 class="hero-title">El Arte de la Belleza Sutil</h1>
                 <p class="hero-subtitle">Descubre la elegancia atemporal. Tu estilo, nuestra pasión.</p>
-              
+              <script>
+    const urlGoogle = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1KXMo-G2kTb7CWXbeREXWLsK0XfBAmYgYjirtRFckvxTrZXIfQ1mSDLw-pFM0wC2IaDXFjfuxl?gv=true';
+    const modal = document.getElementById('reservas-modal');
+    const iframe = document.getElementById('google-calendar-iframe');
+
+    function abrirReservasGoogleModal() {
+        // 1. Cargamos la URL de Google Calendar en el iframe
+        iframe.src = urlGoogle;
+        
+        // 2. Mostramos el modal
+        modal.style.display = 'flex'; // Usamos flex para centrar
+        document.body.style.overflow = 'hidden'; // Evita el scroll en el body
+    }
+
+    function cerrarReservasGoogleModal() {
+        // 1. Ocultamos el modal
+        modal.style.display = 'none';
+        
+        // 2. Restauramos el scroll del body
+        document.body.style.overflow = 'auto';
+        
+        // Opcional: Detenemos la carga del iframe al cerrar para liberar recursos
+        iframe.src = 'about:blank'; 
+    }
+
+    // Opcional: Cerrar el modal al hacer clic fuera de su contenido
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            cerrarReservasGoogleModal();
+        }
+    }
+</script>
 <!-- Google Calendar Appointment Scheduling begin -->
 <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
