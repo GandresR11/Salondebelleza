@@ -579,8 +579,8 @@ background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USA
 }
 /* El overlay (fondo semitransparente) */
 .modal-overlay {
-    position: fixed; /* Se queda fijo al hacer scroll */
-    z-index: 1000; /* Asegura que esté por encima de todo */
+    position: relative; /* Se queda fijo al hacer scroll */
+    z-index: 9999; /* Asegura que esté por encima de todo */
     left: 0;
     top: 0;
     width: 100%;
@@ -608,14 +608,16 @@ background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USA
 /* Botón de cerrar */
 .close-button {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    float: left;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    position: absolute;
-    top: 10px;
+    position: relative;
+   
+  bottom:5px;
+  left:15px;
     right: 15px;
-    z-index: 1001; /* Sobre el iframe */
+    z-index: 0; /* Sobre el iframe */
 }
 
 .close-button:hover,
