@@ -579,7 +579,7 @@ background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USA
 }
 /* El overlay (fondo semitransparente) */
 .modal-overlay {
-    position: relative; /* Se queda fijo al hacer scroll */
+    position: fixed; /* Se queda fijo al hacer scroll */
     z-index: 9999; /* Asegura que esté por encima de todo */
     left: 0;
     top: 0;
