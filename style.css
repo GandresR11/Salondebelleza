@@ -78,6 +78,7 @@ a {
     width: 90%; /* Ancho en móviles */
     margin: 0 auto;
     padding: 1em 0; /* Ajuste para dar más control al header/footer */
+    
 }
 
 .section {
@@ -494,6 +495,7 @@ background-image: url('imagenes/hero-background.png'); /* <<-- ASEGÚRATE DE USA
     .container {
         width: 85%;
         max-width: 1200px;
+        justify-content: space-between;
     }
 
     /* Navegación de Escritorio */
