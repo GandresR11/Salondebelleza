@@ -274,6 +274,7 @@ a {
     background-color: #25D366; 
     color: var(--color-texto-claro);
     border-color: #25D366;
+    border-radius: 10rem;
 }
 
 .whatsapp-btn:hover {
